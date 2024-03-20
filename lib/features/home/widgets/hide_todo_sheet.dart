@@ -1,6 +1,8 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:swift_spend/features/home/bloc/home_bloc.dart';
 
 class HideTodoSheet extends StatelessWidget {
   const HideTodoSheet({super.key});
@@ -42,7 +44,12 @@ class HideTodoSheet extends StatelessWidget {
                     content:Text("Are you sure you want to hide your Todo List till Tommorrow?"),
                     actions:[
                       ElevatedButton(
-                        onPressed:(){},
+                        onPressed:(){
+                          Navigator.pop(context);
+
+                          context.read<HomeBloc>().hideTodoList();
+
+                        },
                         child:Text("Yes, Remove it"),
                       ),
                       ElevatedButton(
